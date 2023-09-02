@@ -1,11 +1,13 @@
 package dev.aleksandrphilimonov.pastebox.api.response;
 
-import dev.aleksandrphilimonov.pastebox.api.request.PublicStatus;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 
 @Data
+@RequiredArgsConstructor
 public class PasteboxResponse {
-    private String data;
-    private PublicStatus status;
+    private final String data;
+    private final boolean isPublic;
+
 }
