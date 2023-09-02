@@ -21,7 +21,7 @@ public class PasteBoxController {
 
     @PostMapping("/")
     public String add(@RequestBody PasteBoxRequest request) {
-        return request.getDate();
+        return request.getData();
     }
 
 }
