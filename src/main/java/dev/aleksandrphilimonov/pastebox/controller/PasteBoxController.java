@@ -1,6 +1,6 @@
 package dev.aleksandrphilimonov.pastebox.controller;
 
-import dev.aleksandrphilimonov.pastebox.api.request.PasteBoxRequest;
+import dev.aleksandrphilimonov.pastebox.api.request.PasteboxRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -20,7 +20,7 @@ public class PasteBoxController {
     }
 
     @PostMapping("/")
-    public String add(@RequestBody PasteBoxRequest request) {
+    public String add(@RequestBody PasteboxRequest request) {
         return request.getData();
     }
 
