@@ -1,6 +1,7 @@
 package dev.aleksandrphilimonov.pastebox;
 
 import dev.aleksandrphilimonov.pastebox.api.response.PasteboxResponse;
+import dev.aleksandrphilimonov.pastebox.exception.NotFoundEntityException;
 import dev.aleksandrphilimonov.pastebox.repository.PasteboxEntity;
 import dev.aleksandrphilimonov.pastebox.repository.PasteboxRepository;
 import dev.aleksandrphilimonov.pastebox.service.PasteboxService;
@@ -11,6 +12,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -24,7 +26,8 @@ public class PasteboxServiceTest {
 
     @Test
     public void notExistHash() {
-        assertThrows(NullPointerException.class, () -> pasteboxService.getByHash("asdfcafasd"));
+        when(pasteboxRepository.getByHash(anyString())).thenThrow(NotFoundEntityException.class);
+        assertThrows(NotFoundEntityException.class, () -> pasteboxService.getByHash("asdfcafasd"));
     }
 
     @Test
